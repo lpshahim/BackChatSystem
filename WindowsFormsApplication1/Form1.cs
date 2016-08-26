@@ -98,6 +98,7 @@ namespace WindowsFormsApplication1
             getInfo();
             navigateForms();
 
+
         }
         
 
@@ -160,6 +161,16 @@ namespace WindowsFormsApplication1
             }
         }
 
-       
+        int iRow;
+        public void prevStudent()
+        {
+            iRow = dataGridView1.CurrentCell.RowIndex;
+            if (nRow <= dataGridView1.RowCount)
+            {
+                dataGridView1.Rows[iRow].Selected = false;
+                dataGridView1.Rows[--nRow].Selected = true;
+            }
+        }
+
     }
 }
