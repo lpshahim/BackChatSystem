@@ -64,5 +64,22 @@ namespace WindowsFormsApplication1
             frm1.getInfo();
             showInfo();
         }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void listBox1_Click(object sender, EventArgs e)
+        {
+            listBox3.Items.Add(listBox1.SelectedItem);
+            listBox1.Items.Remove(listBox1.SelectedItem);
+        }
+
+        private void listBox3_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(listBox3.SelectedItem);
+            listBox3.Items.Remove(listBox3.SelectedItem);
+        }
     }
 }

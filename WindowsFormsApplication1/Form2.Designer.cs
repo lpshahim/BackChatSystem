@@ -1010,13 +1010,11 @@
             // listBox3
             // 
             this.listBox3.FormattingEnabled = true;
-            this.listBox3.Items.AddRange(new object[] {
-            "Language",
-            "References"});
             this.listBox3.Location = new System.Drawing.Point(96, 35);
             this.listBox3.Name = "listBox3";
             this.listBox3.Size = new System.Drawing.Size(62, 95);
             this.listBox3.TabIndex = 4;
+            this.listBox3.Click += new System.EventHandler(this.listBox3_Click);
             // 
             // groupBox2
             // 
@@ -1045,6 +1043,8 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(62, 95);
             this.listBox1.TabIndex = 2;
+            this.listBox1.Click += new System.EventHandler(this.listBox1_Click);
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // panel1
             // 
