@@ -53,5 +53,10 @@ namespace WindowsFormsApplication1
         {
             frm1.aaa(); 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frm1.prevStudent();
+        }
     }
 }

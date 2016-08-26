@@ -96,13 +96,7 @@ namespace WindowsFormsApplication1
 
             navigateForms();
 
-            if (e.RowIndex > -1)
-            {
-                string cellValue = this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                string columnName = this.dataGridView1.Columns[e.ColumnIndex].HeaderText;
-                
-                
-            }
+            
             
         }
         
@@ -163,6 +157,16 @@ namespace WindowsFormsApplication1
             {
                 dataGridView1.Rows[nRow].Selected = false;
                 dataGridView1.Rows[++nRow].Selected = true;
+            }
+        }
+        int iRow;
+        public void prevStudent()
+        {
+            iRow = dataGridView1.CurrentCell.RowIndex;
+            if (nRow <= dataGridView1.RowCount)
+            {
+                dataGridView1.Rows[iRow].Selected = false;
+                dataGridView1.Rows[--nRow].Selected = true;
             }
         }
     }
