@@ -32,16 +32,7 @@ namespace WindowsFormsApplication1
         private void Form2_Load(object sender, EventArgs e)
         {
             //this.label19.Text = string.Format("ColumnName = {0} And Value = {1}", this.ColumnName, this.CellValue);
-            label19.Text = "JOU MAAAAAA";
-            label1.Text = "Name: " + frm1.name;
-            label2.Text = "Number: " + frm1.number;
-            label5.Text = "Module: " + frm1.module;
-            label6.Text = "Group: " + frm1.group;
-            label7.Text = "Assignment: " + frm1.assignment;
-           
-
-
-
+            showInfo();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -49,9 +40,22 @@ namespace WindowsFormsApplication1
             
         }
 
+        private void showInfo()
+        {
+            label19.Text = "JOU MAAAAAA";
+            label1.Text = "Name: " + frm1.name;
+            label2.Text = "Number: " + frm1.number;
+            label5.Text = "Module: " + frm1.module;
+            label6.Text = "Group: " + frm1.group;
+            label7.Text = "Assignment: " + frm1.assignment;
+        }
         private void button3_Click(object sender, EventArgs e)
         {
-            frm1.aaa(); 
+            frm1.nextStudent();
+            frm1.getInfo();
+            showInfo();
+
+
         }
     }
 }

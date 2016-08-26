@@ -44,7 +44,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnLoad = new System.Windows.Forms.Button();
             this.classListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.backChatDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.backChatDataSet = new WindowsFormsApplication1.BackChatDataSet();
@@ -177,7 +177,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Controls.Add(this.button6);
+            this.panel1.Controls.Add(this.btnLoad);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Location = new System.Drawing.Point(19, 88);
             this.panel1.Name = "panel1";
@@ -191,17 +191,18 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(249, 208);
             this.dataGridView1.TabIndex = 27;
+//            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
             // 
-            // button6
+            // btnLoad
             // 
-            this.button6.Location = new System.Drawing.Point(149, 245);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(64, 23);
-            this.button6.TabIndex = 20;
-            this.button6.Text = "Load";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btnLoad.Location = new System.Drawing.Point(149, 245);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(64, 23);
+            this.btnLoad.TabIndex = 20;
+            this.btnLoad.Text = "Load";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.button6_Click);
             // 
             // classListBindingSource
             // 
@@ -322,7 +323,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
