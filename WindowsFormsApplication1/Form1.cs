@@ -100,8 +100,7 @@ namespace WindowsFormsApplication1
             {
                 string cellValue = this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
                 string columnName = this.dataGridView1.Columns[e.ColumnIndex].HeaderText;
-                Form2 frm2 = new Form2(cellValue, columnName);
-                frm2.Show();
+                
                 
             }
             
