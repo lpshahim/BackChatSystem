@@ -55,7 +55,6 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button7 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.classListBindingSource)).BeginInit();
@@ -280,21 +279,11 @@
             this.textBox1.Size = new System.Drawing.Size(124, 97);
             this.textBox1.TabIndex = 22;
             // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(474, 273);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 23;
-            this.button7.Text = "button7";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(693, 449);
-            this.Controls.Add(this.button7);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox1);
@@ -345,7 +334,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button7;
     }
 }
 
