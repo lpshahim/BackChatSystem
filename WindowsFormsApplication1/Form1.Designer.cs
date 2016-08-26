@@ -191,7 +191,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(249, 208);
             this.dataGridView1.TabIndex = 27;
-//            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
             // 
             // btnLoad
@@ -221,7 +220,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(414, 414);
+            this.button5.Location = new System.Drawing.Point(488, 400);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(64, 23);
             this.button5.TabIndex = 19;
