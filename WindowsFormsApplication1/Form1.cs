@@ -143,11 +143,12 @@ namespace WindowsFormsApplication1
         int nRow;
         private void Form1_Load(object sender, EventArgs e)
         {
-            nRow = dataGridView1.CurrentCell.RowIndex;
+         
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+           
             if (nRow <= dataGridView1.RowCount)
             {
                 dataGridView1.Rows[nRow].Selected = false;
@@ -157,6 +158,7 @@ namespace WindowsFormsApplication1
 
         public void aaa()
         {
+            nRow = dataGridView1.CurrentCell.RowIndex;
             if (nRow <= dataGridView1.RowCount)
             {
                 dataGridView1.Rows[nRow].Selected = false;
