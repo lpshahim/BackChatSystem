@@ -53,8 +53,6 @@
             this.backChatDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.classListTableAdapter = new WindowsFormsApplication1.BackChatDataSetTableAdapters.ClassListTableAdapter();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.classListBindingSource)).BeginInit();
@@ -261,31 +259,11 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(453, 78);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(453, 108);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(124, 97);
-            this.textBox1.TabIndex = 22;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(693, 449);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.panel1);
@@ -302,7 +280,6 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.backChatDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -332,8 +309,6 @@
         private System.Windows.Forms.BindingSource classListBindingSource;
         private BackChatDataSetTableAdapters.ClassListTableAdapter classListTableAdapter;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

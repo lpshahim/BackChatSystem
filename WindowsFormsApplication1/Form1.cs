@@ -17,6 +17,7 @@ namespace WindowsFormsApplication1
 
         //public access to datagridview
         public DataGridView DGV { get; set; }
+       public DataTable dtl { get; set; }
 
         public void navigateForms()
         {
@@ -30,7 +31,7 @@ namespace WindowsFormsApplication1
         public string module;
         public string group;
         public string assignment;
-
+        public string csvFile;
         public Form1()
         {
             InitializeComponent();
@@ -101,40 +102,46 @@ namespace WindowsFormsApplication1
 
         }
         
+        public DataTable PopulateTable(string csvFile)
+        {
+           
+            string[] str = File.ReadAllLines(csvFile);
 
+            csvFile = Path.GetFileNameWithoutExtension(csvFile);
+
+            txtMarksheet.Text = csvFile;
+
+            DataTable dt = new DataTable();
+
+            string[] temp = str[0].Split(';');
+
+            foreach (string t in temp)
+            {
+                dt.Columns.Add(t, typeof(string));
+            }
+
+            for (int i = 1; i < str.Length; i++)
+            {
+                string[] t = str[i].Split(';');
+                dt.Rows.Add(t);
+
+            }
+            return dt;
+           
+        }
        
         private void button1_Click(object sender, EventArgs e)
         {
-            string markSheet;
+            
             openFileDialog1.InitialDirectory = @"C:\Documents";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                markSheet = openFileDialog1.FileName;
-                string[] str = File.ReadAllLines(markSheet);
-
-                markSheet = Path.GetFileNameWithoutExtension(markSheet);
-                
-                txtMarksheet.Text = markSheet;
-
-                DataTable dt = new DataTable();
-
-                string[] temp = str[0].Split(';');
-
-                foreach (string t in temp)
-                {
-                    dt.Columns.Add(t, typeof(string));
-                }
-
-                for (int i = 1; i < str.Length; i++)
-                {
-                    string[] t = str[i].Split(';');
-                    dt.Rows.Add(t);
-
-                }
+                csvFile = openFileDialog1.FileName;
+                dtl = PopulateTable(csvFile);
             }
         }
         
-        //iterate through class list
+     
         int nRow;
         private void Form1_Load(object sender, EventArgs e)
         {
