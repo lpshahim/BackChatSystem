@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-
+using Newtonsoft.Json;
+using System.IO;
+using System.Net;
 namespace WindowsFormsApplication1
 {
     public partial class Record : Form
@@ -43,14 +45,88 @@ namespace WindowsFormsApplication1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+
+
             var filePath = "";
             var name = "";
             InputBox("File Name", "Save file as", ref name);
             filePath = name;
             mciSendString("save recsound " + "C:\\test\\" + filePath + ".wav", null, 0, 0);
             mciSendString("save recsound " + filePath, null, 0, 0);
+         
             mciSendString("close recsound ", null, 0, 0);
-            MessageBox.Show("File Created");
+       
+            filePath = "C:\\test\\" + filePath + ".wav";
+            long length = new System.IO.FileInfo(filePath).Length;
+            string fileSize = SizeSuffix(length);
+            byte[] rec = File.ReadAllBytes(filePath);
+            DateTime dateValue = DateTime.Now;
+         
+            AddRecording r = new AddRecording(dateValue.ToString(), name, fileSize, rec, ".wav");
+            addRecording(r);
+
+           // removeRecording();
+        }
+        static readonly string[] SizeSuffixes =
+                  { "bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
+        static string SizeSuffix(Int64 value)
+        {
+            if (value < 0) { return "-" + SizeSuffix(-value); }
+
+            int i = 0;
+            decimal dValue = (decimal)value;
+            while (Math.Round(dValue / 1024) >= 1)
+            {
+                dValue /= 1024;
+                i++;
+            }
+
+            return string.Format("{0:n1} {1}", dValue, SizeSuffixes[i]);
+        }
+        private void removeRecording()
+        {
+            System.IO.DirectoryInfo di = new DirectoryInfo("C:\\test\\");
+
+            foreach (FileInfo file in di.GetFiles())
+            {
+                file.Delete();
+            }
+            foreach (DirectoryInfo dir in di.GetDirectories())
+            {
+                dir.Delete(true);
+            }
+        }
+        static void addRecording(AddRecording r)
+        {
+            string json = JsonConvert.SerializeObject(r);
+
+            string sendPersonURL = "http://m23598840.puk.ac.za/addFile.php";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(sendPersonURL);
+
+            request.Method = "POST";
+            request.ContentType = "application/json";
+            request.ContentLength = json.Length;
+
+            try
+            {
+                using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+                {
+                    streamWriter.Write(json);
+                    streamWriter.Close();
+
+                    var httpResponse = (HttpWebResponse)request.GetResponse();
+                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                    {
+                        var result = streamReader.ReadToEnd();
+                        //  MessageBox.Show("R : " + result);
+                    }
+                }
+            }
+            catch (WebException wex)
+            {
+                MessageBox.Show("Error connecting to webservice: " + wex.Message);
+            }
+
         }
 
         private void btnReject_Click(object sender, EventArgs e)
@@ -58,6 +134,7 @@ namespace WindowsFormsApplication1
             mciSendString("stop recsound", "", 0, 0);
             mciSendString("close recsound", "", 0, 0);
         }
+        #region Input
         public DialogResult InputBox(string title, string promptText, ref string value)
         {
             Form form = new Form();
@@ -95,5 +172,6 @@ namespace WindowsFormsApplication1
             value = textBox.Text;
             return dialogResult;
         }
+        #endregion
     }
 }
