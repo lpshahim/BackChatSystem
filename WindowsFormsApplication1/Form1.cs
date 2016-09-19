@@ -37,7 +37,8 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             BindGridView();
             CreateFolder(@"C:\BackChat\");
-
+            CreateFolder(@"C:\BackChat\Recordings");
+            CreateFolder(@"C:\BackChat\Recordings\Default");
         }
         public void CreateFolder(string subPath)
         {

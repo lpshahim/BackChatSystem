@@ -22,7 +22,7 @@ namespace WindowsFormsApplication1
         public Record()
         {
             InitializeComponent();
-            frm1.CreateFolder(@"C:\BackChat\Recordings\");
+            frm1.CreateFolder(@"C:\BackChat\Recordings\Custom");
         }
 
         private void btnRec_Click(object sender, EventArgs e)
@@ -30,7 +30,7 @@ namespace WindowsFormsApplication1
             mciSendString("open new Type waveaudio Alias recsound", null, 0, 0);
             mciSendString("set recsound time format ms bitspersample 16 channels 2 samplespersec 48000 bytespersec 192000 alignment 4", null, 0, 0);
             mciSendString("record recsound", null, 0, 0);
-            MessageBox.Show("Recording");
+           
         }
 
         private void btnPause_Click(object sender, EventArgs e)
@@ -51,13 +51,14 @@ namespace WindowsFormsApplication1
 
             var filePath = "";
             var name = "";
+            mciSendString("stop recsound", "", 0, 0);
             InputBox("File Name", "Save file as", ref name);
             filePath = name;
-            mciSendString("save recsound " + @"C:\BackChat\Recordings\" + filePath + ".wav", null, 0, 0);
+            mciSendString("save recsound " + @"C:\BackChat\Recordings\Custom\" + filePath + ".wav", null, 0, 0);
             mciSendString("save recsound " + filePath, null, 0, 0);
-         
             mciSendString("close recsound ", null, 0, 0);
-       
+
+
             /*
             //DB*****************************************************************************
            filePath = @"C:\BackChat\Recordings\" + filePath + ".wav";
@@ -72,7 +73,7 @@ namespace WindowsFormsApplication1
            AddRecording r = new AddRecording(dateValue, name, length, rec, ".wav");
            addRecording(r);*/
 
-           // removeRecording();
+            // removeRecording();
         }
        /* static readonly string[] SizeSuffixes =
                   { "bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
