@@ -58,20 +58,23 @@ namespace WindowsFormsApplication1
          
             mciSendString("close recsound ", null, 0, 0);
        
-
+            /*
             //DB*****************************************************************************
-           /* filePath = "C:\\test\\" + filePath + ".wav";
+           filePath = @"C:\BackChat\Recordings\" + filePath + ".wav";
             long length = new System.IO.FileInfo(filePath).Length;
-            string fileSize = SizeSuffix(length);
+            //string fileSize = SizeSuffix(length);
+            string tmp = "";
+       
+
             byte[] rec = File.ReadAllBytes(filePath);
             DateTime dateValue = DateTime.Now;
          
-           AddRecording r = new AddRecording(dateValue.ToString(), name, fileSize, rec, ".wav");
-            addRecording(r);*/
+           AddRecording r = new AddRecording(dateValue, name, length, rec, ".wav");
+           addRecording(r);*/
 
            // removeRecording();
         }
-        static readonly string[] SizeSuffixes =
+       /* static readonly string[] SizeSuffixes =
                   { "bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
         static string SizeSuffix(Int64 value)
         {
@@ -85,7 +88,7 @@ namespace WindowsFormsApplication1
                 i++;
             }
 
-            return string.Format("{0:n1} {1}", dValue, SizeSuffixes[i]);
+            return string.Format("{0:n1} {1}", dValue, SizeSuffixes[i]);*/
         }
         private void removeRecording()
         {
@@ -122,7 +125,7 @@ namespace WindowsFormsApplication1
                     using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                     {
                         var result = streamReader.ReadToEnd();
-                        //  MessageBox.Show("R : " + result);
+                         MessageBox.Show("R : " + result);
                     }
                 }
             }

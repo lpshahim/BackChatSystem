@@ -8,15 +8,15 @@ namespace WindowsFormsApplication1
 {
     class AddRecording
     {
-        public string date { get; set; }
+        public DateTime dateAdded { get; set; }
         public string fileName { get; set; }
-        public string fileSize { get; set; }
+        public long fileSize { get; set; }
         public byte[]  fileData { get; set; }
         public string fileClass { get; set; } 
       
-        public AddRecording(string date, string fileName, string fileSize, byte[] fileDate, string fileClass)
+        public AddRecording(DateTime dateAdded, string fileName, long fileSize, byte[] fileData, string fileClass)
         {
-            this.date = date;
+            this.dateAdded = dateAdded;
             this.fileName = fileName;
             this.fileSize = fileSize;
             this.fileData = fileData;
