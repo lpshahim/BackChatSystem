@@ -88,8 +88,8 @@ namespace WindowsFormsApplication1
                 i++;
             }
 
-            return string.Format("{0:n1} {1}", dValue, SizeSuffixes[i]);*/
-        }
+            return string.Format("{0:n1} {1}", dValue, SizeSuffixes[i]);
+        }*/
         private void removeRecording()
         {
             System.IO.DirectoryInfo di = new DirectoryInfo("C:\\test\\");
