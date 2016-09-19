@@ -13,7 +13,9 @@ namespace WindowsFormsApplication1
 {
     public partial class Form2 : Form
     {
-       
+
+        bool flag = true;
+
         public Form1 frm1 = new Form1();
         public Form2()
         {
@@ -58,16 +60,21 @@ namespace WindowsFormsApplication1
 
                         for (int i = 1; i <= countColumn; i++)
                         {
-                            dataFromGrid = dataFromGrid + ';' + dataRowObject.Cells[i].Value.ToString();
-
-                            
+                            dataFromGrid = dataFromGrid + ';' + dataRowObject.Cells[i].Value.ToString();   
                         }
                         csvFileWriter.WriteLine(dataFromGrid);
                     }
                 }
-           
 
-
+                if (flag != false)
+                {
+                    foreach (var item in listBox3.Items)
+                    {
+                        csvFileWriter.WriteLine(item.ToString());
+                    }
+                    PopulateListBox(listBox1, @"C:\BackChat\Recordings\Default\", "*.wav");
+                }
+              
                 csvFileWriter.Flush();
                 csvFileWriter.Close();
             }
@@ -77,6 +84,8 @@ namespace WindowsFormsApplication1
             }
 
         }
+
+
         //datagridview access
         private string ColumnName { get; set; }
         private string CellValue { get; set; }
@@ -94,6 +103,8 @@ namespace WindowsFormsApplication1
            // frm1.PopulateTable();
             showInfo();
             //populate listbox
+            listBox1.Items.Clear();
+            listBox3.Items.Clear();
             PopulateListBox(listBox1, @"C:\BackChat\Recordings\Default\","*.wav");
         }
 
@@ -106,7 +117,6 @@ namespace WindowsFormsApplication1
 
         private void showInfo()
         {
-
             label1.Text = "Name: " + frm1.name;
             label2.Text = "Number: " + frm1.number;
             label5.Text = "Module: " + frm1.module;
@@ -116,16 +126,14 @@ namespace WindowsFormsApplication1
         private void button3_Click(object sender, EventArgs e)
         {
             string fileName = @"C:\BackChat\MarkSheet\" + frm1.number + ".csv";
-           Save(fileName, dataGridView1);
+            Save(fileName, dataGridView1);
 
             dataGridView1.DataSource = frm1.PopulateTable(frm1.csvFile);
             
             frm1.nextStudent();
             frm1.getInfo();
             showInfo();
-        
-
-
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -152,6 +160,8 @@ namespace WindowsFormsApplication1
         //function to populate listbox
         private void PopulateListBox(ListBox lsb, string Folder, string FileType)
         {
+            listBox1.Items.Clear();
+            listBox3.Items.Clear();
             DirectoryInfo dirInfo = new DirectoryInfo(Folder);
             FileInfo[] Files = dirInfo.GetFiles(FileType);
             foreach (FileInfo file in Files)
