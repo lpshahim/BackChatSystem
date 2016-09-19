@@ -13,15 +13,15 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
-        
 
+        public Form2 frm2;
         //public access to datagridview
         public DataGridView DGV { get; set; }
        public DataTable dtl { get; set; }
 
         public void navigateForms()
         {
-            Form2 frm2 = new Form2();
+          frm2 = new Form2();
             frm2.frm1 = this;
             frm2.Show();
         }
@@ -36,8 +36,16 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             BindGridView();
-        }
+            CreateFolder(@"C:\BackChat\");
 
+        }
+        public void CreateFolder(string subPath)
+        {
+            bool exists = System.IO.Directory.Exists(subPath);
+
+            if (!exists)
+                System.IO.Directory.CreateDirectory(subPath);
+        }
         private void BindGridView()
         {
             using (DataTable dt = new DataTable())
@@ -49,13 +57,15 @@ namespace WindowsFormsApplication1
 
         private void button6_Click(object sender, EventArgs e)
         {
-            string classList;
+            CreateFolder(@"C:\BackChat\ClassList");
+            string classList = "";
             openFileDialog1.InitialDirectory = @"C:\Documents";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 classList = openFileDialog1.FileName;
                 string[] str = File.ReadAllLines(classList);
 
+             
 
                 DataTable dt = new DataTable();
                
@@ -77,6 +87,12 @@ namespace WindowsFormsApplication1
                 dataGridView1.DataSource = dt;
 
             }
+            Form2 frm2 = new Form2();
+
+            string fileName = Path.GetFileName(classList);
+            string path = @"C:\BackChat\ClassList\" + fileName;
+            frm2.Save(path, dataGridView1);
+
 
 
         }

@@ -14,20 +14,22 @@ namespace WindowsFormsApplication1
     public partial class Form2 : Form
     {
        
-        public Form1 frm1;
+        public Form1 frm1 = new Form1();
         public Form2()
         {
             InitializeComponent();
+           
+            frm1.CreateFolder(@"C:\BackChat\MarkSheet\");
         }
 
-        public void Stoor(string fileName)
+        public void Save(string fileName, DataGridView dataGridView1)
         {
 
-            string x = System.IO.Directory.CreateDirectory(@"C:\test\" +fileName).ToString();
-            string CsvFpath = @"C:\test\" + x + "\\" + fileName +".csv";
+            //string x = System.IO.Directory.CreateDirectory(@"C:\test\" +fileName).ToString();
+       
             try
             {
-                System.IO.StreamWriter csvFileWriter = new StreamWriter(CsvFpath, false);
+                System.IO.StreamWriter csvFileWriter = new StreamWriter(fileName, false);
 
                 string columnHeaderText = "";
 
@@ -111,7 +113,8 @@ namespace WindowsFormsApplication1
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            Stoor(frm1.number);
+            string fileName = @"C:\BackChat\MarkSheet\" + frm1.number + ".csv";
+           Save(fileName, dataGridView1);
 
             dataGridView1.DataSource = frm1.PopulateTable(frm1.csvFile);
             

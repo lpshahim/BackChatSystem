@@ -15,12 +15,14 @@ namespace WindowsFormsApplication1
 {
     public partial class Record : Form
     {
-        public Form2 frm2;
+        public Form2 frm2 = new Form2();
+        public Form1 frm1 = new Form1();
         [DllImport("winmm.dll", EntryPoint = "mciSendStringA", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
         private static extern int mciSendString(string lpstrCommand, string lpstrReturnString, int uReturnLength, int hwndCallback);
         public Record()
         {
             InitializeComponent();
+            frm1.CreateFolder(@"C:\BackChat\Recordings\");
         }
 
         private void btnRec_Click(object sender, EventArgs e)
@@ -51,19 +53,21 @@ namespace WindowsFormsApplication1
             var name = "";
             InputBox("File Name", "Save file as", ref name);
             filePath = name;
-            mciSendString("save recsound " + "C:\\test\\" + filePath + ".wav", null, 0, 0);
+            mciSendString("save recsound " + @"C:\BackChat\Recordings\" + filePath + ".wav", null, 0, 0);
             mciSendString("save recsound " + filePath, null, 0, 0);
          
             mciSendString("close recsound ", null, 0, 0);
        
-            filePath = "C:\\test\\" + filePath + ".wav";
+
+            //DB*****************************************************************************
+           /* filePath = "C:\\test\\" + filePath + ".wav";
             long length = new System.IO.FileInfo(filePath).Length;
             string fileSize = SizeSuffix(length);
             byte[] rec = File.ReadAllBytes(filePath);
             DateTime dateValue = DateTime.Now;
          
-            AddRecording r = new AddRecording(dateValue.ToString(), name, fileSize, rec, ".wav");
-            addRecording(r);
+           AddRecording r = new AddRecording(dateValue.ToString(), name, fileSize, rec, ".wav");
+            addRecording(r);*/
 
            // removeRecording();
         }
