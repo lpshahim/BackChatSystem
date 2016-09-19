@@ -93,6 +93,8 @@ namespace WindowsFormsApplication1
             dataGridView1.DataSource = frm1.dtl;
            // frm1.PopulateTable();
             showInfo();
+            //populate listbox
+            PopulateListBox(listBox1, @"C:\BackChat\Recordings\Default\","*.wav");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -145,6 +147,22 @@ namespace WindowsFormsApplication1
         {
             listBox1.Items.Add(listBox3.SelectedItem);
             listBox3.Items.Remove(listBox3.SelectedItem);
+        }
+
+        //function to populate listbox
+        private void PopulateListBox(ListBox lsb, string Folder, string FileType)
+        {
+            DirectoryInfo dirInfo = new DirectoryInfo(Folder);
+            FileInfo[] Files = dirInfo.GetFiles(FileType);
+            foreach (FileInfo file in Files)
+            {
+                lsb.Items.Add(file.Name);
+            }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
